@@ -1,0 +1,5 @@
+# My Configuration
+*.mat
+*.asv
+OriginData/
+WorkData/
