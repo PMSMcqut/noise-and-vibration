@@ -15,6 +15,7 @@ load('I_harm.mat');
 
 mm=1e-3;
 mu0=4*pi*10^-7;% permeability in vacuum
+Basic_speed=1000;
 %% Data Input
 %======================= Geometry Data,Simulation Data =============
 Qs=36;% slot number
