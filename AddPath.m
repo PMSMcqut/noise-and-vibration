@@ -1,1 +1,1 @@
-addpath('.\coil','.\OriginData','.\WorkData','.\Force','.\FreqResFun','.\Plot','.\Vibration','.\Function','.\color');
+addpath('.\coil','.\OriginData','.\WorkData','.\Force','.\FreqResFun','.\Plot','.\Vibration','.\Function','.\color','.\FRM');
