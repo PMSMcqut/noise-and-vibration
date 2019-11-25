@@ -34,6 +34,8 @@ Nc=Ns*Nlayer; % number of conductors
 n3ph=2; % number of three phase winding
 Beta=30*pi/180;% phase belt degree
 alphaS=30*pi/180;% phase shift between the two sets of three phase winding
+[Winding,Slot]=WindingArrange(Qs,p,yq,m,n3ph,Beta,alphaS);
+[SlotMatrix]=SlotMatrix(Qs,m,Winding);
 % ====================== Structure parameters ======================
 Mode=[0,2,4,6];% number of model in calculation
 ForceNum=[6,4,2,0,-2,-4,-6];% spatial order of force in calculation
