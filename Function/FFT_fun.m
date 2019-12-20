@@ -50,7 +50,7 @@ switch type
         TimeDomain.Time=time;
         TimeDomain.Space=space;
         N.Time=length(TimeDomain.Time);% 时间采样点数
-        Fs.Time=f0*N.Time;% 时间采样频率
+        Fs.Time=1/(TimeDomain.Time(2)-TimeDomain.Time(1)); %f0*N.Time;% 时间采样频率
         N.Space=length(TimeDomain.Space);
         Fs.Space=1/360*N.Space;% 1/(TimeDomain.Space(2)-TimeDomain.Space(1)) 空间采样频率
         Fourier.ComplexData=fft2(data,N.Space,N.Time);
