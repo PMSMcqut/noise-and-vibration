@@ -1,11 +1,11 @@
 function [FreqResEq,FreqResWave,FreqResTooth]=FreqResFun_Calculation(Mode,FRF_freq,FreqResWave,FreqResTooth,StaDef,f_modal,damp)
 % =============== Analytical ======================================
-FRF_Ana.rad=@(ModeNum,freq) StaDef.rad(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp(Mode==ModeNum)*freq/f_modal(Mode==ModeNum)));
-FRF_Ana.tan=@(ModeNum,freq) StaDef.tan(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp(Mode==ModeNum)*freq/f_modal(Mode==ModeNum)));
-FRF_Ana.tq=@(ModeNum,freq) StaDef.tq(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp(Mode==ModeNum)*freq/f_modal(Mode==ModeNum)));
-% FRF_Ana.rad=@(ModeNum,freq) StaDef.rad(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp.*freq/f_modal(Mode==ModeNum)));
-% FRF_Ana.tan=@(ModeNum,freq) StaDef.tan(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp.*freq/f_modal(Mode==ModeNum)));
-% FRF_Ana.tq=@(ModeNum,freq) StaDef.tq(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp.*freq/f_modal(Mode==ModeNum)));
+% FRF_Ana.rad=@(ModeNum,freq) StaDef.rad(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp(Mode==ModeNum)*freq/f_modal(Mode==ModeNum)));
+% FRF_Ana.tan=@(ModeNum,freq) StaDef.tan(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp(Mode==ModeNum)*freq/f_modal(Mode==ModeNum)));
+% FRF_Ana.tq=@(ModeNum,freq) StaDef.tq(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp(Mode==ModeNum)*freq/f_modal(Mode==ModeNum)));
+FRF_Ana.rad=@(ModeNum,freq) StaDef.rad(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp.*freq/f_modal(Mode==ModeNum)));
+FRF_Ana.tan=@(ModeNum,freq) StaDef.tan(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp.*freq/f_modal(Mode==ModeNum)));
+FRF_Ana.tq=@(ModeNum,freq) StaDef.tq(Mode==ModeNum)*(1./(1-(freq/f_modal(Mode==ModeNum)).^2+1i*2*damp.*freq/f_modal(Mode==ModeNum)));
 for i=1:length(Mode)
     FreqResEq.rad.complex(:,i)=FRF_Ana.rad(Mode(i),FRF_freq);
     FreqResEq.tan.complex(:,i)=FRF_Ana.tan(Mode(i),FRF_freq);
