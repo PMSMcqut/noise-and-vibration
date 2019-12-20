@@ -1,4 +1,4 @@
-function [Iph,Islot]=Current(n3ph,m,p,Nt,Ipeak,f0,T,time,gamma,type,I_harm,SlotMatrix,ap)
+function [Iph,Islot]=Current(n3ph,m,p,Nt,Ipeak,f0,T,time,gamma,type,I_harm,SlotMatrix,ap,Nlayer)
 switch type
     case 'sin'
         for j=1:n3ph
@@ -12,5 +12,5 @@ switch type
         [~,time_loc]=ismember(round(time*Fs),round(time_harm*Fs));
         Iph(1:length(time),:)=I_harm(time_loc,:);
 end
-Islot=(Iph*SlotMatrix/ap)';
+Islot=(Iph*SlotMatrix/ap)'*Nlayer;
 end

@@ -1,5 +1,5 @@
 function [F,Frz,Ftz,Mrz,ForceIntegral,FourierBr,FourierBt,FourierFr,FourierFt,FourierRad,FourierTan,FourierTq,Force]...
-    =Force_Calculation(Br,Bt,Freq,ForceNum,mu0,L,Ris,Qs,alpha_b0,Space,TimeStep,AngleStep,TimeDomain,f0)
+    =Force_Calculation_MultiSpeed(Br,Bt,Freq,ForceNum,mu0,L,Ris,Qs,alpha_b0,Space,TimeStep,AngleStep,TimeDomain,f0)
 %% Force Calculation
 %======================= flux density ==============================
 % imported

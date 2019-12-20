@@ -3,8 +3,9 @@ function [ForceIntegral]=Force_Integral(F,L,Ris,Qs,alpha_b0,Space,TimeStep)
 % 0秒和最后一秒也是重合的
 theta_a=Space';% rotor position when force integral
 DeltaTheta_a=360/Qs/2;% angle between the two adjacent tooth
-theta=theta_a*pi/180;
-DeltaTheta=DeltaTheta_a*pi/180*(1-alpha_b0);
+% theta=theta_a*pi/180;
+theta=theta_a*pi/180*(1-alpha_b0);
+% DeltaTheta=DeltaTheta_a*pi/180*(1-alpha_b0);
 for q=1:Qs
     thetaZ_a=360*(q-1/2)/Qs;
     thetaZ=thetaZ_a*pi/180;
