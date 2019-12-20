@@ -1,9 +1,9 @@
 function []=Plot_Pcolor_Force_Density(F,FourierFr,FourierFt,Time,Space)
-load('mycolormap.mat');
+load('custom_colormap.mat');
 View.TimeOrder=0:36;
 View.SpaceOrder=-12:12;
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierFr.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierFr.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierFr.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierFr.P.TimeOrder);
 % ----- 图窗属性设置 -----------------------------------------------
 fig=gcf;
 NameArrayGcf={'Name','color','position','Units'};
@@ -20,7 +20,7 @@ for i = 1:numel(h)
     set(h(i),'FaceColor','flat','EdgeColor','none','FaceAlpha',0.6);
 end
 % ------ 颜色图属性 ----------------------------------------
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{3}(1:end,:));
 % caxis([0 1]);%调整colorbar的颜色范围
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
@@ -69,7 +69,7 @@ for i = 1:numel(h)
     set(h(i),'FaceColor','flat','EdgeColor','none','FaceAlpha',0.6);
 end
 % ------ 颜色图属性 ----------------------------------------
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{3}(1:end,:));
 % caxis([0 1]);%调整colorbar的颜色范围
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;

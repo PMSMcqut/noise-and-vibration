@@ -9,9 +9,9 @@ VlaueArrayGcf={'white',[500,100,800,400],'centimeters'};
 set(fig,NameArrayGcf,VlaueArrayGcf);
 % ----- 图形属性设置--------------------------------------------------
 subplot(2,2,1)
-plot(Space(1:AngleStep)',Bg.rad(1,1:AngleStep)','LineStyle','-','Marker','none','LineWidth',1.5,'color','r');
+plot(Space(1:AngleStep)',Bg.rad(100,1:AngleStep)','LineStyle','-','Marker','none','LineWidth',1.5,'color','r');
 hold on
-plot(Space(1:AngleStep)',Bg_load.rad(1:AngleStep,1),'LineStyle','-','Marker','none','LineWidth',1.5,'color','k');
+plot(Space(1:AngleStep)',Bg_load.rad(1:AngleStep,100),'LineStyle','-','Marker','none','LineWidth',1.5,'color','k');
 % ----- 坐标轴属性设置 ----------------------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','xlim','ylim'};

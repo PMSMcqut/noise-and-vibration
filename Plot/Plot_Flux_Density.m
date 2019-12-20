@@ -70,8 +70,8 @@ view(-45,40);
 title('Tangential flux density');
 % ================= radial flux density FFT ========================
 subplot(2,2,3);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierBr.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierBr.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierBr.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierBr.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierBr.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierBr.P.Amplitude))]);
@@ -109,8 +109,8 @@ set(label.cb,NameArrayCb,ValueArrayCb);
 view(-45,35);
 % ================= tangential flux density FFT ========================
 subplot(2,2,4);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierBt.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierBt.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierBt.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierBt.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierBt.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierBt.P.Amplitude))]);
