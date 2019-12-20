@@ -1,5 +1,7 @@
 # My Configuration
 *.mat
 *.asv
-OriginData/
+FEMData/
 WorkData/
+Results/
+TestData/

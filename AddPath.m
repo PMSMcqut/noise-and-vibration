@@ -1,1 +1,2 @@
-addpath('.\coil','.\OriginData','.\WorkData','.\Force','.\FreqResFun','.\Plot','.\Vibration','.\Function','.\color','.\FRM');
+addpath('.\ANN','.\coil','.\color','.\FEMData','.\Force','.\FreqResFun','.\FRM','.\Function','.\HighFreqForce','.\Plot','.\Results','.\SignalProcess','.\Simulink',...
+    '.\TestData','.\Vibration','.\WorkData');

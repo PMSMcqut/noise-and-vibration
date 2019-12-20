@@ -39,8 +39,7 @@ alphaS=30*pi/180;% phase shift between the two sets of three phase winding
 % ====================== Structure parameters ======================
 Mode=[0,2,4,6];% number of model in calculation
 ForceNum=[6,4,2,0,-2,-4,-6];% spatial order of force in calculation
-f_modal=[9100,1867.25,6277.8,11254];% modal frequency[0,2,4,6]
-damp=[5.63,1.16,3.88,6.96]*1e-02;% damping ratio
+f_modal=[9100,1760,6277.8,11500];% modal frequency[0,2,4,6]
 StaDef.rad=[1.4056e-9,4.2437e-8,2.3e-9,1.0034e-9]; %[0,2,4,6],Static Deformation Function,Unit:m
 StaDef.tan=[6.6104e-11,3.96e-8,3.0225e-9,1.6588e-9]*(-1i);
 StaDef.tq=[4.0914e-8,1.088e-6,1.3972e-7,8.8213e-8]*(1i);
