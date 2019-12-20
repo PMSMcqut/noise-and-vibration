@@ -1,7 +1,7 @@
 clear;clc;
 load('Basic_Fun.mat');% conductor:Nc, current in one conductor: Basic_I, two slot
 load('Bpm_fem.mat');
-Basic_I=0.2:0.2:14; % equivalent current of one conductor for basic function
+Basic_I=(0.2:0.2:14)*2; % equivalent current of one conductor for basic function
 Qs=36;p=3;
 Nt=gcd(Qs,p); % number of unit motor
 space_step=size(Basic_Fun{1}.rad,2);
@@ -44,12 +44,22 @@ for ii=1:n
     end
 end
 [x,y]=ndgrid(Basic_I,Basic_Time);
-I(1:m,1:360)={x};
+I_arm(1:m,1:360)={x};
+I_pm(1,1:360)={x};
 T(1:m,1:360)={y};
 Method(1:m,1:360)={'spline'};
-Barm_fun.rad=cellfun(@griddedInterpolant,I,T,Barm_theta_rad,Method,'UniformOutput',false);
-Barm_fun.tan=cellfun(@griddedInterpolant,I,T,Barm_theta_tan,Method,'UniformOutput',false);
-Bpm_fun.rad=cellfun(@griddedInterpolant,I(1,:),T(1,:),Bpm_theta_rad,Method(1,:),'UniformOutput',false);
-Bpm_fun.tan=cellfun(@griddedInterpolant,I(1,:),T(1,:),Bpm_theta_tan,Method(1,:),'UniformOutput',false);
+Barm_fun.rad=cellfun(@griddedInterpolant,I_arm,T,Barm_theta_rad,Method,'UniformOutput',false);
+Barm_fun.tan=cellfun(@griddedInterpolant,I_arm,T,Barm_theta_tan,Method,'UniformOutput',false);
+Bpm_fun.rad=cellfun(@griddedInterpolant,I_pm,T(1,:),Bpm_theta_rad,Method(1,:),'UniformOutput',false);
+Bpm_fun.tan=cellfun(@griddedInterpolant,I_pm,T(1,:),Bpm_theta_tan,Method(1,:),'UniformOutput',false);
+%% Save Data
 % save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\WorkData\Barm_fun.mat','Barm_fun')
 % save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\WorkData\Bpm_fun.mat','Bpm_fun')
+% save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\Results\Barm_theta_rad.mat','Barm_theta_rad')
+% save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\Results\Barm_theta_tan.mat','Barm_theta_tan')
+% save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\Results\Bpm_theta_rad.mat','Bpm_theta_rad')
+% save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\Results\Bpm_theta_tan.mat','Bpm_theta_tan')
+% save('E:\OneDrive - i.b.school.nz\GitHub\vibration_for_PMSM\Results\Basic_slot.mat','Basix_slot')
+%% Figure
+load('custom_colormap.mat');
+Plot_BasicFun(Basic_I,p,time_step,Basic_speed,custom_colormap,Barm_theta_rad,Barm_theta_tan,Bpm_theta_rad,Bpm_theta_tan);
