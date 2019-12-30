@@ -1,5 +1,5 @@
 %% Winding Arrange
-function [Winding,Slot]=WindingArrange(Qs,p,yq,m,n3ph,Beta,alphaS);
+function [Winding,Slot]=WindingArrange(Qs,p,yq,m,n3ph,Beta,alphaS)
 %% begin to caculate the star of slots
 g=gcd(Qs,2*m*p); % caculate the gratest common division of slots and 2*m*p
 N=Qs/g;D=2*m*p/g;
@@ -18,7 +18,6 @@ j=0;
 theta0=2*pi/(2*m*N);%槽号相位图中每个小格的电角度
 BetaNum=Beta/theta0;%一个相带所占的格数
 DeltaS=alphaS/theta0;%不同星型之间偏移小格数
-
 %% distribution the slots to A B C phase
 for ii=1:n3ph
     for i=1:1:2*Qs
