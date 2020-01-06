@@ -24,7 +24,7 @@ ax=gca;
 NameArrayAx={'FontSize','FontWeight','FontName','LineWidth','Box','BoxStyle','xlim','xtick'...
     ,'xticklabel','ylim','ytick','yticklabel','DataAspectRatio'};
 ValueArrayAx={13.5,'bold','Arial',1,'off','full',[fig.f.min,fig.f.max],fig.f.min:fig.f.step:fig.f.max,...
-    (fig.f.min:fig.f.step:fig.f.max)/1000,[fig.rpm.min,fig.rpm.max],fig.rpm.min:fig.rpm.step*3:fig.rpm.max,fig.rpm.min:fig.rpm.step*3:fig.rpm.max,[6 1 1]};
+    (fig.f.min:fig.f.step:fig.f.max)/1000,[fig.rpm.min,fig.rpm.max],fig.rpm.min:fig.rpm.step*3:fig.rpm.max,fig.rpm.min:fig.rpm.step*3:fig.rpm.max,[1 1 1]};
 set(ax,NameArrayAx,ValueArrayAx);
 % ---------------- ◊¯±Í÷·±Í«©…Ë÷√
 tx=xlabel('');
