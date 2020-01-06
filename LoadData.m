@@ -12,7 +12,7 @@ load('FreqResTooth.mat');
 load('FreqResWave.mat');
 load('FreqResWaveFix.mat');
 load('I_harm.mat');
-
+load('custom_colormap');
 mm=1e-3;
 mu0=4*pi*10^-7;% permeability in vacuum
 Basic_speed=1000;
