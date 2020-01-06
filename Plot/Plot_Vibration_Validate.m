@@ -7,7 +7,7 @@ step=1;
 % ----- 图窗属性设置 -----------------------------------------------
 fig=gcf;
 NameArrayGcf={'Name','color','position','Units'};
-VlaueArrayGcf={'spectrum of vibration','white',[500,100,200,600],'centimeters'};
+VlaueArrayGcf={'spectrum of vibration','white',[500,100,600,200],'centimeters'};
 set(fig,NameArrayGcf,VlaueArrayGcf);
 %% Acceleration
 % ----- 图形属性设置--------------------------------------------------

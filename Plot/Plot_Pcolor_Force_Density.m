@@ -1,5 +1,4 @@
-function []=Plot_Pcolor_Force_Density(F,FourierFr,FourierFt,Time,Space)
-load('custom_colormap.mat');
+function []=Plot_Pcolor_Force_Density(F,FourierFr,FourierFt,Time,Space,custom_colormap)
 View.TimeOrder=0:36;
 View.SpaceOrder=-12:12;
 [~,angle_loc]=ismember(View.SpaceOrder,FourierFr.P.SpaceOrder);

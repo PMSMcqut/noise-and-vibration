@@ -1,5 +1,4 @@
-function []=Plot_Force_Density(F,FourierFr,FourierFt,Time,Space)
-load('mycolormap.mat');
+function []=Plot_Force_Density(F,FourierFr,FourierFt,Time,Space,custom_colormap)
 View.TimeOrder=0:24;
 View.SpaceOrder=-12:12;
 % ----- 图窗属性设置 -----------------------------------------------
@@ -35,6 +34,7 @@ label.cb=colorbar;
 NameArrayCb={'LineWidth','FontSize','Visible','Location'};
 ValueArrayCb={0.5,13,'off','north'};
 set(label.cb,NameArrayCb,ValueArrayCb);
+colormap(custom_colormap{2}(1:end,:));
 view(-45,40);
 title('Radial force density')
 % ====================== tangential force density ====================
@@ -65,12 +65,13 @@ label.cb=colorbar;
 NameArrayCb={'LineWidth','FontSize','Visible','Location'};
 ValueArrayCb={0.5,13,'off','north'};
 set(label.cb,NameArrayCb,ValueArrayCb);
+colormap(custom_colormap{2}(1:end,:));
 view(-45,40);
 title('Tangential force density');
 % ================= radial force density FFT ========================
 subplot(2,2,3);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierFr.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierFr.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierFr.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierFr.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierFr.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierFr.P.Amplitude))]);
@@ -80,7 +81,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...
@@ -108,8 +109,8 @@ set(label.cb,NameArrayCb,ValueArrayCb);
 view(-45,35);
 % ================= tangential force density FFT ========================
 subplot(2,2,4);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierFt.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierFt.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierFt.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierFt.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierFt.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierFt.P.Amplitude))]);
@@ -119,7 +120,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...

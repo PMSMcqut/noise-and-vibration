@@ -1,5 +1,4 @@
-function []=Plot_Lumped_Force(Frz,Ftz,Mrz,Time,TimeStep,ToothAngle,Qs,FourierRad,FourierTan,FourierTq)
-load('mycolormap.mat');
+function []=Plot_Lumped_Force(Frz,Ftz,Mrz,Time,TimeStep,ToothAngle,Qs,FourierRad,FourierTan,FourierTq,custom_colormap)
 View.TimeOrder=0:36;
 View.SpaceOrder=-17:18;
 % ----- 图窗属性设置 -----------------------------------------------
@@ -35,6 +34,7 @@ label.cb=colorbar;
 NameArrayCb={'LineWidth','FontSize','Visible','Location'};
 ValueArrayCb={0.5,13,'off','north'};
 set(label.cb,NameArrayCb,ValueArrayCb);
+colormap(custom_colormap{2}(1:end,:));
 view(-45,40);
 title('Radial force')
 % ================= tangential force ===========================
@@ -65,6 +65,7 @@ label.cb=colorbar;
 NameArrayCb={'LineWidth','FontSize','Visible','Location'};
 ValueArrayCb={0.5,13,'off','north'};
 set(label.cb,NameArrayCb,ValueArrayCb);
+colormap(custom_colormap{2}(1:end,:));
 view(-45,40);
 title('Tangential force')
 % ================= Moment =========================================
@@ -99,8 +100,8 @@ view(-45,40);
 title('Moment')
 % ================= radial force FFT ========================
 subplot(2,3,4);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierRad.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierRad.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierRad.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierRad.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierRad.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierRad.P.Amplitude))]);
@@ -110,7 +111,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...
@@ -138,8 +139,8 @@ set(label.cb,NameArrayCb,ValueArrayCb);
 view(-45,35);
 % ================= Tangential force FFT ========================
 subplot(2,3,5);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierTan.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierTan.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierTan.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierTan.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierTan.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierTan.P.Amplitude))]);
@@ -149,7 +150,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...
@@ -177,8 +178,8 @@ set(label.cb,NameArrayCb,ValueArrayCb);
 view(-45,35);
 % ================= Moment FFT ========================
 subplot(2,3,6);
-[angle_tf,angle_loc]=ismember(View.SpaceOrder,FourierTq.P.SpaceOrder);
-[time_tf,time_loc]=ismember(View.TimeOrder,FourierTq.P.TimeOrder);
+[~,angle_loc]=ismember(View.SpaceOrder,FourierTq.P.SpaceOrder);
+[~,time_loc]=ismember(View.TimeOrder,FourierTq.P.TimeOrder);
 % ----- 图形属性设置-----------------------------------------
 h=bar3(FourierTq.P.Amplitude(angle_loc,time_loc),0.5);
 zlim([0 max(max(FourierTq.P.Amplitude))]);
@@ -188,7 +189,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...

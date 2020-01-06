@@ -1,6 +1,5 @@
-function []=Plot_Flux_Density(Br,Bt,FourierBr,FourierBt,Time,Space)
+function []=Plot_Flux_Density(Br,Bt,FourierBr,FourierBt,Time,Space,custom_colormap)
 %% ==================== figure plot ==================================
-load('mycolormap.mat');
 View.TimeOrder=0:24;
 View.SpaceOrder=-12:12;
 % ----- 图窗属性设置 -----------------------------------------------
@@ -36,6 +35,7 @@ label.cb=colorbar;
 NameArrayCb={'LineWidth','FontSize','Visible','Location'};
 ValueArrayCb={0.5,13,'off','north'};
 set(label.cb,NameArrayCb,ValueArrayCb);
+colormap(custom_colormap{2}(1:end,:));
 view(-45,40);
 title('Radial flux density')
 % ====================== tangential flux density ====================
@@ -66,6 +66,7 @@ label.cb=colorbar;
 NameArrayCb={'LineWidth','FontSize','Visible','Location'};
 ValueArrayCb={0.5,13,'off','north'};
 set(label.cb,NameArrayCb,ValueArrayCb);
+colormap(custom_colormap{2}(1:end,:));
 view(-45,40);
 title('Tangential flux density');
 % ================= radial flux density FFT ========================
@@ -81,7 +82,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...
@@ -120,7 +121,7 @@ for i = 1:numel(h)
     set(h(i),'CData',zData);
     set(h(i),'FaceColor','flat');
 end
-colormap(mycolormap(1:24,:));
+colormap(custom_colormap{2}(1:end,:));
 % ----- 坐标轴属性设置 --------------------------------------
 ax=gca;
 NameArrayAx={'FontSize','FontName','LineWidth','Box','BoxStyle','xlim','xtick','xticklabel'...
